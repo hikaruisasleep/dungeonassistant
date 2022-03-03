@@ -3,8 +3,8 @@ import tanjun as Tanjun
 
 async def roll(ctx: Tanjun.abc.SlashContext, dice: str) -> None:
     n = dice.find('d')
-    d_amount = dice[:n]
-    d_face = dice[n:]
+    d_amount = int(dice[:n])
+    d_face = int(dice[n+1:])
 
     rolls = []
 

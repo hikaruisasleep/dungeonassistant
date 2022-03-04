@@ -29,7 +29,7 @@ def module_loader(client: Tanjun.Client, path):
         client.load_modules(path + '.' + module)
 
 def create_client(bot: Hikari.GatewayBot) -> Tanjun.Client:
-    client = (Tanjun.Client.from_gateway_bot(bot, mention_prefix=True, declare_global_commands=GUILD_ID).add_prefix('/'))
+    client = (Tanjun.Client.from_gateway_bot(bot, mention_prefix=True, declare_global_commands=775253878312009768).add_prefix('/'))
     module_loader(client, 'commands')
     return client
 
@@ -50,11 +50,6 @@ async def on_shard_ready(event: Hikari.ShardReadyEvent, client_: Tanjun.Client =
     )
 
     client_.set_type_dependency(Lavasnek.Lavalink, await builder.build(voice.EventHandler))
-
-    lavalink: Lavasnek.Lavalink = Tanjun.injected(type=Lavasnek.Lavalink)
-
-    connection = await lavalink.join(GUILD_ID, DND_VOICE)
-    await lavalink.create_session(connection_info=connection)
 
 @client.with_listener(Hikari.VoiceStateUpdateEvent)
 async def on_voice_state_update(event: Hikari.VoiceStateUpdateEvent, lavalink: Lavasnek.Lavalink = Tanjun.injected(type=Lavasnek.Lavalink)) -> None:

@@ -1,4 +1,7 @@
+import typing
+import hikari as Hikari
 import lavasnek_rs as Lavasnek
+import tanjun as Tanjun
 
 class EventHandler:
     async def track_start(self, _: Lavasnek.Lavalink, event: Lavasnek.TrackStart) -> None:
@@ -14,5 +17,4 @@ class EventHandler:
         if skip and node:
             if not node.queue and not node.now_playing:
                 await lavalink.stop(event.guild_id)
-
 

@@ -29,7 +29,7 @@ def module_loader(client: Tanjun.Client, path):
         client.load_modules(path + '.' + module)
 
 def create_client(bot: Hikari.GatewayBot) -> Tanjun.Client:
-    client = (Tanjun.Client.from_gateway_bot(bot, mention_prefix=True, declare_global_commands=775253878312009768).add_prefix('/'))
+    client = (Tanjun.Client.from_gateway_bot(bot, mention_prefix=True, declare_global_commands=True).add_prefix('/'))
     module_loader(client, 'commands')
     return client
 

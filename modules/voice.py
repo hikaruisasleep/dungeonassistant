@@ -1,9 +1,18 @@
-import lavaplayer as LavaPlayer
+import lavasnek_rs as Lavasnek
 
-lavalink = LavaPlayer.LavalinkClient(
-    host='127.0.0.1',
-    port=2333,
-    password='youshallnotpass',
-    user_id=123
-)
+class EventHandler:
+    async def track_start(self, _: Lavasnek.Lavalink, event: Lavasnek.TrackStart) -> None:
+        print(f"Track started on guild: {event.guild_id}")
+
+    async def track_finish(self, _: Lavasnek.Lavalink, event: Lavasnek.TrackFinish) -> None:
+        print(f"Track finished on guild: {event.guild_id}")
+
+    async def track_exception(self, lavalink: Lavasnek.Lavalink, event: Lavasnek.TrackException) -> None:
+        print(f"Track exception event happened on guild: {event.guild_id}")
+        skip = await lavalink.skip(event.guild_id)
+        node = await lavalink.get_guild_node(event.guild_id)
+        if skip and node:
+            if not node.queue and not node.now_playing:
+                await lavalink.stop(event.guild_id)
+
 

@@ -2,4 +2,4 @@ python-dotenv
 hikari
 hikari-tanjun
 hikari-yuyo
-lavaplayer
+lavasnek_rs

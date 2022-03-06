@@ -2,5 +2,6 @@
 
 aka Mariana.
 
-> discord bot for dnd. very broken
-> made with hikari and hikari-tanjun framework in python
+> discord bot for dnd. very broken.
+
+made with hikari, hikari-tanjun, and hikari-yuyo framework in python

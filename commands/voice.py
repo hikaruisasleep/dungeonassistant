@@ -4,7 +4,7 @@ import hikari as Hikari
 import lavasnek_rs as Lavasnek
 import tanjun as Tanjun
 
-async def join_as_slash(ctx: Tanjun.abc.SlashContext, lavalink: Lavasnek.Lavalink = Tanjun.injected(type=Lavasnek.Lavalink),
+async def join_as_slash(ctx: Tanjun.abc.SlashContext, lavalink: Lavasnek.Lavalink = Tanjun.inject(type=Lavasnek.Lavalink),
 ) -> None:
     if channel := await _join_voice(ctx, lavalink):
         await ctx.respond(f"Connected to <#{channel}>")
@@ -31,7 +31,7 @@ join_cmd = Tanjun.SlashCommand(
     'Joins the voice channel you are currently in',
 )
 
-async def leave_as_slash(ctx: Tanjun.abc.SlashContext, lavalink: Lavasnek.Lavalink = Tanjun.injected(type=Lavasnek.Lavalink)) -> None:
+async def leave_as_slash(ctx: Tanjun.abc.SlashContext, lavalink: Lavasnek.Lavalink = Tanjun.inject(type=Lavasnek.Lavalink)) -> None:
     await _leave_voice(ctx, lavalink)
 
 async def _leave_voice(ctx: Tanjun.abc.Context, lavalink: Lavasnek.Lavalink) -> None:

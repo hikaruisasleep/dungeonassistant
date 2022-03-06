@@ -19,7 +19,7 @@ async def _leave_voice(ctx: Tanjun.abc.Context, lavalink: Lavasnek.Lavalink) -> 
 
     return
 
-async def shutdown(ctx: Tanjun.abc.SlashContext, lavalink: Lavasnek.Lavalink = Tanjun.injected(type=Lavasnek.Lavalink)) -> None:
+async def shutdown(ctx: Tanjun.abc.SlashContext, lavalink: Lavasnek.Lavalink = Tanjun.inject(type=Lavasnek.Lavalink)) -> None:
     if ctx.author.id != 332842719250481182:
         await ctx.respond('lol no only i can do that -ben', flags=Hikari.MessageFlag.EPHEMERAL)
         return

@@ -8,7 +8,7 @@ async def persistence_callback(ctx: Yuyo.ComponentContext):
     await ctx.respond(f'Pressed.')
 
 @component.with_listener(Hikari.StartedEvent)
-async def on_bot_ready(_: Hikari.StartedEvent, component_client: Yuyo.ComponentClient = Tanjun.injected(type=Yuyo.ComponentClient)):
+async def on_bot_ready(_: Hikari.StartedEvent, component_client: Yuyo.ComponentClient = Tanjun.inject(type=Yuyo.ComponentClient)):
     component_client.set_constant_id('primary-click', persistence_callback)
 
 @component.with_command
@@ -23,8 +23,7 @@ async def campaign_manager(ctx: Tanjun.abc.Context) -> None:
 
     await ctx.respond(
         "Yuyo component test",
-        component=row,
-        ensure_result=True,
+        component=row
     )
 
 @Tanjun.as_loader
